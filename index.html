@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplication Table</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <script>
+        function makeTable() {
+            var start = parseInt(document.getElementById("start").value);
+            var end = parseInt(document.getElementById("end").value);
+
+            if (isNaN(start) || isNaN(end) || start < 2 || end < 2 || start > 10 || end > 10) {
+                alert("Please enter numbers between 2 and 10");
+                return;
+            }
+
+            var table = "<table>";
+            for (var num1 = start; num1 <= end; num1++) {
+                table += "<tr>";
+                for (var num2 = 1; num2 <= end; num2++) {
+                    table += "<td>" + (num1 * num2) + "</td>";
+                }
+                table += "</tr>";
+            }
+            table += "</table>";
+
+            document.getElementById("table-container").innerHTML = table;
+        }
+    </script>
+    <label for="start">Beginning Value</label>
+    <input type="number" id="start" min="2" max="10" class="importfont"><br><br>
+    <label for="end">Ending Value</label>
+    <input type="number" id="end" min="2" max="10" class="importfont"><br><br>
+    <button onclick="makeTable()" class="importfont">Generate Table</button><br><br>
+    <div id="table-container"></div>
+</body>
+</html>
